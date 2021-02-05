@@ -1,0 +1,13 @@
+version: 1.0.{build}
+image: Previous Visual Studio 2019
+configuration: Release
+platform: Any CPU
+before_build:
+- ps: nuget restore
+build:
+  verbosity: minimal
+after_build:
+- ps: .\Build\hashes.ps1
+artifacts:
+- path: HashedCI\bin\Release
+  name: Build
