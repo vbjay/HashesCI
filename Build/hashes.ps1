@@ -1,7 +1,6 @@
 ﻿Set-Location $PSScriptRoot\..\
 
-$brnch = git rev-parse --abbrev-ref HEAD
-$hsh = git rev-parse brnch
+$hsh = git rev-parse HEAD
 $fl = "$PSScriptRoot\$hsh.txt" 
 git checkout hashes
 if (!(Test-Path "$fl")) {
@@ -24,7 +23,7 @@ if (!(Test-Path "$fl")) {
 }
 else {
     "file exists"
-    git checkout $brnch
+    git checkout $hsh
 }
 
 
