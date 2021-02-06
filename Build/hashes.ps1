@@ -1,5 +1,5 @@
 ﻿Set-Location $PSScriptRoot\..\
-git fetch -q origin +refs/hashes
+
 $brnch = git rev-parse --abbrev-ref HEAD
 $hsh = git rev-parse brnch
 $fl = "$PSScriptRoot\$hsh.txt" 
