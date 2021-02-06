@@ -3,6 +3,7 @@
 $hsh = git rev-parse HEAD
 $fl = "$PSScriptRoot\$hsh.txt" 
 git checkout hashes
+mkdir "$PSScriptRoot"
 if (!(Test-Path "$fl")) {
     $lines = Get-ChildItem -Recurse -File -Path "$PSScriptRoot\..\HashedCI\bin\Release"  | 
     Get-FileHash -Algorithm SHA512 | ForEach-Object { 
