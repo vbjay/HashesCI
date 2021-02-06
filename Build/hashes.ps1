@@ -1,8 +1,9 @@
 ﻿Set-Location $PSScriptRoot\..\
-    
-$hsh = git rev-parse master
+git fetch hashes
+$brnch = git rev-parse --abbrev-ref HEAD
+$hsh = git rev-parse brnch
 $fl = "$PSScriptRoot\$hsh.txt" 
- git checkout hashes
+git checkout hashes
 if (!(Test-Path "$fl")) {
     $lines = Get-ChildItem -Recurse -File -Path "$PSScriptRoot\..\HashedCI\bin\Release"  | 
     Get-FileHash -Algorithm SHA512 | ForEach-Object { 
@@ -23,7 +24,7 @@ if (!(Test-Path "$fl")) {
 }
 else {
     "file exists"
-
+    git checkout $brnch
 }
 
 
